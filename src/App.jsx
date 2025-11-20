@@ -1,8 +1,9 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import Gallery from './components/Gallery'
+import Solutions from './components/Solutions'
 import Features from './components/Features'
 import CTA from './components/CTA'
-import Gallery from './components/Gallery'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <main>
         <Hero />
         <Gallery />
+        <Solutions />
         <Features />
         <CTA />
       </main>
