@@ -2,11 +2,11 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Features from './components/Features'
 import CTA from './components/CTA'
+import Gallery from './components/Gallery'
 
 function App() {
   return (
     <div className="min-h-screen bg-white text-gray-900" style={{
-      // CSS variables for Valhal Connect brand system
       ['--vh-primary-50']: '#e6f0ff',
       ['--vh-primary-300']: '#7fb0ff',
       ['--vh-primary-600']: '#2f6fe9',
@@ -22,6 +22,7 @@ function App() {
 
       <main>
         <Hero />
+        <Gallery />
         <Features />
         <CTA />
       </main>
