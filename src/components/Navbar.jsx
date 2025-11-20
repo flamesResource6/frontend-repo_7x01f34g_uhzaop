@@ -1,4 +1,4 @@
-import { Menu, ChevronDown } from "lucide-react"
+import { Menu, ChevronDown, AppWindow, Users, Wrench } from "lucide-react"
 import { useState, useRef, useEffect } from "react"
 
 function Navbar() {
@@ -26,34 +26,75 @@ function Navbar() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8 text-sm text-gray-600">
-            <div className="relative" ref={menuRef}>
+            <div className="relative" ref={menuRef}
+                 onMouseEnter={() => setOpen(true)}
+                 onMouseLeave={() => setOpen(false)}>
               <button
                 className="inline-flex items-center gap-1 hover:text-gray-900 transition-colors focus:outline-none"
                 aria-haspopup="true"
                 aria-expanded={open}
                 onClick={() => setOpen((o) => !o)}
-                onMouseEnter={() => setOpen(true)}
-                onMouseLeave={() => setOpen(false)}
               >
                 <span>Solutions</span>
                 <ChevronDown size={16} className={`transition-transform ${open ? 'rotate-180' : ''}`} />
               </button>
 
-              {/* Dropdown */}
+              {/* Mega menu panel */}
               <div
-                onMouseEnter={() => setOpen(true)}
-                onMouseLeave={() => setOpen(false)}
-                className={`absolute left-0 mt-3 w-[320px] rounded-xl border border-gray-200 bg-white shadow-lg/50 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.25)] overflow-hidden transition-all origin-top ${open ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
+                className={`absolute left-0 mt-3 w-[720px] max-w-[calc(100vw-2rem)] rounded-2xl border border-gray-200 bg-white/95 backdrop-blur shadow-[0_20px_50px_-20px_rgba(0,0,0,0.35)] overflow-hidden transition-all origin-top ${open ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
                 role="menu"
               >
-                <a
-                  href="#solutions-moveon"
-                  className="block px-4 py-3 hover:bg-gray-50 focus:bg-gray-50 transition-colors"
-                  role="menuitem"
-                >
-                  <div className="text-sm font-medium text-gray-900">MoveOn</div>
-                  <div className="text-xs text-gray-600">Digital move-in/move-out inspections</div>
-                </a>
+                {/* Top bar / heading */}
+                <div className="px-5 py-4 border-b border-gray-100 bg-gradient-to-r from-[var(--vh-secondary-50)] to-white">
+                  <div className="text-xs uppercase tracking-wider text-gray-500">Explore</div>
+                  <div className="mt-1 text-sm text-gray-700">Pick the solution that fits your workflow.</div>
+                </div>
+
+                {/* Grid of items */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 p-2">
+                  <a href="#solutions-moveon" role="menuitem" className="group rounded-xl p-4 hover:bg-gray-50 focus:bg-gray-50 transition-colors">
+                    <div className="flex items-start gap-3">
+                      <div className="h-9 w-9 rounded-lg bg-[var(--vh-primary-50)] text-[var(--vh-primary-700)] flex items-center justify-center ring-1 ring-[var(--vh-primary-300)]/40">
+                        <AppWindow size={18} />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <div className="text-sm font-semibold text-gray-900">MoveOn</div>
+                        </div>
+                        <div className="text-sm text-gray-600">Digital move-in/move-out inspections</div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="#solutions-community" role="menuitem" className="group rounded-xl p-4 hover:bg-gray-50 focus:bg-gray-50 transition-colors">
+                    <div className="flex items-start gap-3">
+                      <div className="h-9 w-9 rounded-lg bg-[var(--vh-primary-50)] text-[var(--vh-primary-700)] flex items-center justify-center ring-1 ring-[var(--vh-primary-300)]/40">
+                        <Users size={18} />
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Community app</div>
+                        <div className="text-sm text-gray-600">Communication & community (FlatCom / Minbydel-type)</div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="#solutions-custom" role="menuitem" className="group rounded-xl p-4 hover:bg-gray-50 focus:bg-gray-50 transition-colors">
+                    <div className="flex items-start gap-3">
+                      <div className="h-9 w-9 rounded-lg bg-[var(--vh-primary-50)] text-[var(--vh-primary-700)] flex items-center justify-center ring-1 ring-[var(--vh-primary-300)]/40">
+                        <Wrench size={18} />
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Custom solutions</div>
+                        <div className="text-sm text-gray-600">Bespoke workflows and integrations</div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                {/* Bottom note */}
+                <div className="px-5 py-3 border-t border-gray-100 text-xs text-gray-500">
+                  Looking for something else? Let’s design it together.
+                </div>
               </div>
             </div>
 
